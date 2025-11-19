@@ -99,6 +99,42 @@
             gap: 4px;
         }
 
+        .branding {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .brand-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .brand-link span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
         .controls-area {
             display: flex;
             gap: 8px;
@@ -288,8 +324,18 @@
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
+            .branding {
+                flex-direction: column;
+                gap: 8px;
+            }
+
             h1 {
                 font-size: 1.15rem;
+            }
+
+            .brand-link {
+                font-size: 0.65rem;
+                padding: 3px 8px;
             }
 
             .controls-area {
@@ -358,7 +404,12 @@
     <div id="ui-layer">
         <div class="top-bar hud-panel">
             <div class="title-section">
-                <h1>Realistic 3D Rubik's Cube</h1>
+                <div class="branding">
+                    <h1>Realistic 3D Rubik's Cube</h1>
+                    <a href="https://kaiross.in" target="_blank" rel="noopener noreferrer" class="brand-link">
+                        by <span>kaiross.in</span>
+                    </a>
+                </div>
                 <div class="stats" id="move-counter">Moves: 0</div>
             </div>
             <div class="controls-area">
