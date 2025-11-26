@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #3b82f6;
+    --bg-dark: #0a0a0a;
+    --panel-bg: rgba(20, 20, 20, 0.6);
+    --panel-border: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    color: var(--text-main);
+}
+
+#canvas-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    /* Sidebar layout for desktop */
+    grid-template-rows: 1fr;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    pointer-events: auto;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid var(--panel-border);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.branding {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Buttons & Inputs */
+.btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--panel-border);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-align: center;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn.primary {
+    background: var(--primary-color);
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn.primary:hover {
+    background: #2563eb;
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4);
+}
+
+select {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: 1px solid var(--panel-border);
+    padding: 14px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+}
+
+/* Stats & Info */
+.stats-panel {
+    margin-top: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    border: 1px solid var(--panel-border);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.stat-item:last-child {
+    margin-bottom: 0;
+}
+
+.stat-label {
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Hamburger Menu (Mobile Only) */
+.hamburger-btn {
+    display: none;
+    /* Hidden on desktop */
+    pointer-events: auto;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--panel-border);
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.hamburger-icon {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+/* Hints */
+.hint-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    /* Centered relative to the remaining space on desktop? No, let's center relative to viewport but offset */
+    transform: translateX(-50%);
+    pointer-events: none;
+    text-align: center;
+    width: 100%;
+}
+
+/* Adjust hint position for desktop layout */
+@media (min-width: 769px) {
+    .hint-overlay {
+        left: calc(300px + (100vw - 300px) / 2);
+        /* Center in the canvas area */
+        transform: translateX(-50%);
+    }
+}
+
+.hint-pill {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#hint-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 5rem;
+    font-weight: 900;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10;
+    letter-spacing: -2px;
+    white-space: nowrap;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #ui-layer {
+        display: block;
+        /* Remove grid */
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+        transform: translateX(100%);
+        /* Hidden by default */
+        background: rgba(5, 5, 5, 0.95);
+        /* Opaque on mobile */
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .hamburger-btn {
+        display: block;
+    }
+
+    .hint-overlay {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 80px;
+        /* Move up slightly */
+    }
+
+    #hint-text {
+        font-size: 3rem;
+    }
+}

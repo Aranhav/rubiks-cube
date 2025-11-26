@@ -1,0 +1,16 @@
+{
+    "name": "Kaiross Cube",
+    "short_name": "Kaiross",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#3b82f6",
+    "description": "Interactive 3D Rubik's Cube by Kaiross.",
+    "icons": [
+        {
+            "src": "logo.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
